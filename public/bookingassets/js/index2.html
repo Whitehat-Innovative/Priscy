@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bs/bootstrap/css/bootstrap.min.css">
+    <title>Control structures</title>
+</head>
+
+<body class="bg-info">
+
+    <div class="row">
+        <div class="col-md-5 mx-auto mt-5">
+            <div class="card card-body shadow">
+                <h5 class="text-center mb-3"
+                    style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Alpha bank
+                </h5>
+
+                <label for=""
+                    style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 30px;">Enter
+                    amount</label>
+                <input type="number" id="amount" class="form-control">
+
+                <div class="btn-group mt-5">
+                    <button onclick="Checkbalance()" class="btn btn-info">Balance</button>
+                    <button onclick="withdraw()" class="btn btn-primary">Withdraw</button>
+                    <button onclick="deposit()" class="btn btn-success">Deposit </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        console.log('hello dear');
+        var balance = 1000;
+        var amount = 100;
+
+
+        function withdraw() {
+
+            var amount = document.getElementById("amount").value
+            amount = parseInt(amount)
+            console.log("Processing withdrawal");
+
+            if (amount > balance) {
+                alert('insufficient funds');
+            } else if (amount == balance) {
+
+                alert("Account can't be empty");
+            }
+
+            else {
+                balance -= amount;
+                alert('Withdrawal successful');
+            }
+        }
+
+        function Checkbalance() {
+            alert(balance);
+        }
+
+
+        function deposit() {
+            var amount = document.getElementById("amount").value
+            balance = balance + parseInt(amount);
+            alert("Deposit successful");
+        }
+
+    </script>
+
+
+</body>
+
+</html>
