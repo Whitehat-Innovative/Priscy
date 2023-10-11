@@ -1,26 +1,18 @@
-@extends('layouts.app')
-@section('slot')
-    @foreach ($routes as $route)
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Routes</th>
-            <th scope="col">From</th>
-            <th scope="col">To</th>
-            <th scope="col">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">{{ $route->id }}</th>
-            <td>{{ $route->from }}</td>
-            <td>{{ $route->to }}</td>
-            <td>₦{{number_format($route->price )}}</td>
-          </tr>
-        </tbody>
-      </table>
+<x-app-layout>
+     <x-slot name="title">
+        Routes
+    </x-slot>
 
-    @endforeach
-
-    
-@endsection
+    <div class="row">
+        @foreach($routes as $route)
+            <div class="col-md-4">
+                <div class="card card-body shadow text-center">
+                    <h5>{{ $route->from }}</h5>
+                    <h6><i class="ti-arrow-down"></i> </h6>
+                    <h5>{{ $route->to }}</h5>
+                    <h4>₦{{ number_format($route->price) }}</h4>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</x-app-layout>

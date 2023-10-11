@@ -4,11 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Route;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
 {
 
+    function dashboard() {
+        $routes = Route::latest()->get();
+        $tickets = Ticket::latest()->get();
+
+        return view('admin.dashboard', compact('routes', 'tickets'));
+    }
 
 
     function addroute(Request $request)
@@ -18,7 +25,7 @@ class RouteController extends Controller
         $route->to = $request->to;
         $route->price = $request->price;
         $route->save();
-        return back();
+        return redirect()->route('admin.route')->with(['success' => 'New route added']);
     }
 
     function view()
@@ -30,6 +37,7 @@ class RouteController extends Controller
     function route()
     {
         $routes = Route::get()->all();
+
         return view('admin.viewroute', compact('routes'));
     }
 }

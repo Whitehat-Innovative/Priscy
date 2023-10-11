@@ -1,16 +1,36 @@
-@extends('layouts.app')
-@section('slot')
-    <!-- multiple inputs -->
-    <form action="{{ route('admin.add_route') }}" method="POST">@csrf
-        <div class="flex">
-            <input type="text" name="from" placeholder="from"
-                class="form-input ltr:border-r-0 rtl:border-l-0 focus:!border-r rounded-none flex-1" />
-            <input type="text" name="to" placeholder="to"
-                class="form-input ltr:rounded-l-none rtl:rounded-r-none flex-1" />
-            <input type="text" name="price" placeholder="price"
-                class="form-input ltr:rounded-l-none rtl:rounded-r-none flex-1" />
+<x-app-layout>
+    <x-slot name="title">Add Route</x-slot>
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card h-auto">
+                <div class="card-body">
+                    {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
 
-            <button type="submit" class="btn btn-primary mt-6">Submit</button>
+                    <form action="{{ route('admin.add_route') }}" method="POST"> @csrf
+                        <div class="mb-3 ">
+                            <label class="form-label">From</label>
+                            <input type="text"  name="from" required class="form-control">
+                        </div>
+
+                        <div class="row">
+                            <div class="mb-3">
+                                <label class="form-label">Destination</label>
+                                <input type="text" required name="to" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="mb-3">
+                                <label class="form-label">Price per seat (N)</label>
+                                <input type="number" required name="price" class="form-control">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Add Route</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
-@endsection
+    </div>
+
+</x-app-layout>

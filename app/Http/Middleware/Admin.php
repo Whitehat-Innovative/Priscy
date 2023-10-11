@@ -16,9 +16,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->code == '8') {
+        // if (Auth::user()->code == '8') {
             return $next($request);
-        }
-        return back();
+        // }
+        // return back();
     }
 }

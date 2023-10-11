@@ -17,19 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $routes = ModelsRoute::all();
-    return view('welcome', compact('routes'));
-});
+Route::get('/', [LinkController::class, 'home'])->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [LinkController::class, 'account'])->middleware(['auth'])->name('dashboard');
 
-
-// Route::prefix('user')->middleware(['auth', 'user'])->group(function () {
-
-// });
 
 Route::get('/checkout', [PaymentController::class, 'check'])->name('checkout');
 Route::get('/contact', [LinkController::class, 'contact'])->name('contactus');
@@ -45,5 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 include ('admin.php');
 require __DIR__.'/auth.php';
