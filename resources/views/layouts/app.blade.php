@@ -22,7 +22,6 @@
 
     <link href="/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    {{-- <link href="/assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet"> --}}
     <link href="/assets/jqmap/css.css" rel="stylesheet">
 
     <!-- tagify-css -->

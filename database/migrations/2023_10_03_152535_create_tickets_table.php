@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('seats');
             $table->integer('amount');
-            $table->integer('status');
+            $table->string('status');
+            $table->string('reference');
             $table->timestamps();
         });
     }
