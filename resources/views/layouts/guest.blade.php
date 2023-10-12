@@ -83,11 +83,21 @@
                             </div>
                             <!-- end main-menu-content -->
                             <div class="nav-btn">
-                                <div class="header-right-action">
-                                    <a href="{{ route('register') }}"
-                                        class="theme-btn theme-btn-small theme-btn-transparent mr-1">Sign Up</a>
-                                    <a href="{{ route('login') }}" class="theme-btn theme-btn-small">Login</a>
-                                </div>
+                                @guest
+                                    <div class="header-right-action">
+                                        <a href="{{ route('register') }}"
+                                            class="theme-btn theme-btn-small theme-btn-transparent mr-1">Sign Up</a>
+                                        <a href="{{ route('login') }}" class="theme-btn theme-btn-small">Login</a>
+                                    </div>
+                                @endguest
+                                @auth
+                                    <div class="header-right-action">
+                                        <span class="mr-3"><i class="fa fa-user text-primary"></i> {{ Auth::user()->name }}</span>
+                                        <a href="{{ route('tickets') }}" class="theme-btn theme-btn-small">Bookings</a>
+                                        <a href="{{ route('logout') }}"
+                                            class="theme-btn theme-btn-small theme-btn-transparent mr-1">Logout</a>
+                                    </div>
+                                @endauth
 
                             </div>
                             <!-- end nav-btn -->

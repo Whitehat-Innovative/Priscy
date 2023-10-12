@@ -30,6 +30,7 @@ Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallbac
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/my-tickets', [PaymentController::class, 'tickets'])->name('tickets');
     Route::post('/checkout', [PaymentController::class, 'checkout'])->name('checkout');
     Route::get('/complete/{id}', [PaymentController::class, 'complete'])->name('completepay');
 

@@ -14,6 +14,11 @@ use Unicodeveloper\Paystack\Facades\Paystack;
 class PaymentController extends Controller
 {
 
+    function tickets() {
+        $tickets = Auth::user()->tickets;
+
+        return view('tickets', compact('tickets'));
+    }
     public function redirectToGateway(Request $request)
     {
         $ticket = Ticket::create([

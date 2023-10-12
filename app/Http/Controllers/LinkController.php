@@ -20,7 +20,7 @@ class LinkController extends Controller
         if (Auth::user()->code == 8) {
             return redirect()->route('admin.dashboard');
         }
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('welcome');
 
     }
 
