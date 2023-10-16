@@ -21,6 +21,7 @@ class PaymentController extends Controller
     }
     public function redirectToGateway(Request $request)
     {
+        $time = str_replace('T', ' ', $request->date_time);
         $ticket = Ticket::create([
             'amount' => $request->amount,
             'status' => 'pending',
@@ -28,6 +29,7 @@ class PaymentController extends Controller
             'user_id' => Auth::user()->id,
             'route_id' => $request->route_id,
             'reference' => $request->reference,
+            'date_time' => $time,
         ]);
 
         try {

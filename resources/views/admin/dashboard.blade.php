@@ -22,7 +22,7 @@
                             <td>{{ $ticket->route->from }}</td>
                             <td>{{ $ticket->route->to }}</td>
                             <td>₦{{ number_format($ticket->amount) }}</td>
-                            <td>{{ $ticket->created_at->format('d M Y h:ia') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($ticket->date_time)->format('d M Y, h:ia') }}</td>
 
                         </tr>
                         @endforeach

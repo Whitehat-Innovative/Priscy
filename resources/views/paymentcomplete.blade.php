@@ -25,7 +25,7 @@
                             <p><strong class="text-black mr-1">Email:</strong>{{ Auth::user()->email }}</p>
                             <ul class="list-items list-items-3 list-items-4 py-4">
                                 <li><span class="text-black font-weight-bold">Your reservation</span>{{ $ticket->seats }} Seats</li>
-                                <li><span class="text-black font-weight-bold">Departure</span>{{ $ticket->created_at->format('d M Y, h:ia') }}</li>
+                                <li><span class="text-black font-weight-bold">Departure</span>{{ \Carbon\Carbon::parse($ticket->date_time)->format('d M Y, h:ia') }}</li>
                                 <li><span class="text-black font-weight-bold">Total</span>₦{{ number_format($ticket->amount) }}</li>
                                 {{-- <li><span class="text-black font-weight-bold">Cancellation cost</span>From now on: NGN 00</li> --}}
                             </ul>

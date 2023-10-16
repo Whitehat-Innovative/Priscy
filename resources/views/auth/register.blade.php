@@ -25,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label class="mb-1"><strong>Phone</strong></label>
-                <input type="text" required name="phone_number" class="form-control" placeholder="John Doe">
+                <input type="text" required name="phone_number" class="form-control" placeholder="09092839283">
             </div>
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-primary btn-block">Sign me up</button>

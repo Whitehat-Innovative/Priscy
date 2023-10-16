@@ -103,6 +103,7 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <input type="datetime-local" required name="date_time" class="form-control mb-5">
                                 <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
                                 <button class="btn btn-success btn-lg btn-block" type="submit">
                                     <i class="fa fa-plus-circle fa-lg"></i> Book Now

@@ -57,7 +57,7 @@
                         <div class="menu-wrapper justify-content-between">
                             <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                             <div class="logo">
-                                <a href="index7.html"><img src="/bookingassets/images/logo.png" alt="logo" /></a>
+                                <a href="{{ route('welcome') }}"><img src="/bookingassets/images/logo.png" alt="logo" /></a>
                                 <div class="menu-toggler">
                                     <i class="la la-bars"></i>
                                     <i class="la la-times"></i>
@@ -69,15 +69,14 @@
                                 <nav>
                                     <ul>
                                         <li>
+                                            <a href="{{ route('welcome') }}">Home </a>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('ourservices') }}">Services </a>
-
                                         </li>
                                         <li>
                                             <a href="{{ route('contactus') }}">Contact </a>
-
                                         </li>
-
-
                                     </ul>
                                 </nav>
                             </div>
@@ -139,7 +138,7 @@
                 <div class="col-lg-3 responsive-column">
                     <div class="footer-item">
                         <div class="footer-logo padding-bottom-30px">
-                            <a href="index7.html" class="foot__logo"><img src="/bookingassets/images/logo.png"
+                            <a href="{{ route('welcome') }}" class="foot__logo"><img src="/bookingassets/images/logo.png"
                                     alt="logo" /></a>
                         </div>
                         <!-- end logo -->
@@ -165,8 +164,8 @@
                             Contact Us
                         </h4>
                         <ul class="list-items list--items">
-                            <li><a href="about.html">Services</a></li>
-                            <li><a href="services.html">Contact</a></li>
+                            <li><a href="{{ route('ourservices') }}">Services</a></li>
+                            <li><a href="{{ route('contactus') }}">Contact</a></li>
                         </ul>
                     </div>
                     <!-- end footer-item -->
