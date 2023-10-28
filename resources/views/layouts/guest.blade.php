@@ -18,8 +18,8 @@
         href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@1,500&family=Ysabeau:wght@300;400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Template CSS Files -->
     <link rel="stylesheet" href="/bookingassets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/bookingassets/css/bootstrap-select.min.css" />
@@ -57,7 +57,8 @@
                         <div class="menu-wrapper justify-content-between">
                             <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                             <div class="logo">
-                                <a href="{{ route('welcome') }}"><img src="/bookingassets/images/logo.png" alt="logo" /></a>
+                                <a href="{{ route('welcome') }}"><img src="/bookingassets/images/logo.png"
+                                        alt="logo" /></a>
                                 <div class="menu-toggler">
                                     <i class="la la-bars"></i>
                                     <i class="la la-times"></i>
@@ -91,7 +92,8 @@
                                 @endguest
                                 @auth
                                     <div class="header-right-action">
-                                        <span class="mr-3"><i class="fa fa-user text-primary"></i> {{ Auth::user()->name }}</span>
+                                        <span class="mr-3"><i class="fa fa-user text-primary"></i>
+                                            {{ Auth::user()->name }}</span>
                                         <a href="{{ route('tickets') }}" class="theme-btn theme-btn-small">Bookings</a>
                                         <a href="{{ route('logout') }}"
                                             class="theme-btn theme-btn-small theme-btn-transparent mr-1">Logout</a>
@@ -138,8 +140,8 @@
                 <div class="col-lg-3 responsive-column">
                     <div class="footer-item">
                         <div class="footer-logo padding-bottom-30px">
-                            <a href="{{ route('welcome') }}" class="foot__logo"><img src="/bookingassets/images/logo.png"
-                                    alt="logo" /></a>
+                            <a href="{{ route('welcome') }}" class="foot__logo"><img
+                                    src="/bookingassets/images/logo.png" alt="logo" /></a>
                         </div>
                         <!-- end logo -->
                         <p class="footer__desc">
@@ -407,6 +409,49 @@
     <script src="/bookingassets/js/jquery.superslides.min.js"></script>
     <script src="/bookingassets/js/superslider-script.js"></script>
     <script src="/bookingassets/js/main.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @if (session()->has('success'))
+        <script>
+            swal({
+                title: "Good job!",
+                text: "{{ session()->get('success') }}",
+                icon: "success",
+                button: "Great",
+            });
+        </script>
+    @endif
+
+    @if (session()->has('error'))
+        <script>
+            swal({
+                title: "Ooops!",
+                text: "{{ session()->get('error') }}",
+                icon: "error",
+                button: "OK",
+            });
+        </script>
+    @endif
+
+    @php
+        $err_msg = '';
+        foreach ($errors->all() as $err) {
+            $err_msg .= $err . '. ';
+            if (strlen(trim($err_msg)) > 0) {
+                echo '
+                    <script>
+                        swal({
+                            title: "Ooops!",
+                            text: "'.$err_msg .'",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                ';
+            }
+        }
+    @endphp
 </body>
 
 </html>

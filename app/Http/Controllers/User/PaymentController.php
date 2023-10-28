@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Route;
+use App\Models\Seat;
 use App\Models\Ticket;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
@@ -48,6 +49,12 @@ class PaymentController extends Controller
         $ticket->status = 'success';
         $ticket->save();
 
+        $seats = $ticket->route->seats()->where('status', 'free')->take($ticket->seats)->get();
+        foreach ($seats as $s) {
+            $s->ticket_id = $ticket->id;
+            $s->save();
+        }
+
         return redirect()->route('completepay', $ticket->id)->with(['success' => 'Booking successful']);
     }
 
@@ -60,7 +67,14 @@ class PaymentController extends Controller
             'seats' => 'required'
         ]);
 
+
         $route = Route::find($request->route_id);
+
+        $free_space = $route->seats()->where('status', 'free')->count();
+        if ($free_space < $request->seats) {
+            return back()->with(['error' => "Only $free_space seats left"]);
+        }
+
         $seats = $request->seats;
         $price = $seats * $route->price;
 

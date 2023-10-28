@@ -11,6 +11,7 @@
                     <h6><i class="ti-arrow-down"></i> </h6>
                     <h5>{{ $route->to }}</h5>
                     <h4>₦{{ number_format($route->price) }}</h4>
+                    <a href="{{ route('admin.delete_route', $route->id) }}" class="text-danger" >Delete</a>
                 </div>
             </div>
         @endforeach

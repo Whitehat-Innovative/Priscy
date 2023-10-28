@@ -19,6 +19,11 @@
                             </div>
                         </div>
 
+                        <div class="mb-3 ">
+                            <label class="form-label">No. of seats</label>
+                            <input type="number"  name="seats" required class="form-control">
+                        </div>
+
                         <div class="row">
                             <div class="mb-3">
                                 <label class="form-label">Price per seat (N)</label>
